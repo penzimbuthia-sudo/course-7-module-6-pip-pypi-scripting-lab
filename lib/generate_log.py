@@ -1,21 +1,33 @@
 from datetime import datetime
 
 
-def generate_log(data):
-    # Validate input
-    if not isinstance(data, list):
-        raise ValueError("Input must be a list")
+def generate_log(log_data):
+    """
+    Writes a list of log entries to a timestamped .txt file.
 
-    # Generate filename
+    Args:
+        log_data (list): A list of log entry strings.
+
+    Returns:
+        str: The filename that was created.
+
+    Raises:
+        ValueError: If log_data is not a list.
+    """
+    if not isinstance(log_data, list):
+        raise ValueError("log_data must be a list.")
+
     filename = f"log_{datetime.now().strftime('%Y%m%d')}.txt"
 
-    # Write log entries to file
     with open(filename, "w") as file:
-        for entry in data:
+        for entry in log_data:
             file.write(f"{entry}\n")
 
-    # Print confirmation message
     print(f"Log written to {filename}")
 
-    # Return filename for testing
     return filename
+
+
+if __name__ == "__main__":
+    log_data = ["User logged in", "User updated profile", "Report exported"]
+    generate_log(log_data)
