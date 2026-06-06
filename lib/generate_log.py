@@ -6,7 +6,7 @@ def generate_log(data):
     if not isinstance(data, list):
         raise ValueError("data must be a list.")
 
-    # STEP 2: Generate a filename with today's date (e.g., "log_20250408.txt")
+    # STEP 2: Generate a filename with today's date
     filename = f"log_{datetime.now().strftime('%Y%m%d')}.txt"
 
     # STEP 3: Write the log entries to a file using File I/O
